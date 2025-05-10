@@ -1,0 +1,303 @@
+{
+    "mainImages": [
+    {
+      "id": "main_image1",
+      "imageUrl": "/images/main_image1.jpeg",
+      "title": "Cher Horowitz: Yellow Plaid",
+      "outfitType": "formal",
+      "movie": "Clueless",
+      "undertone": "cool",
+      "description": "Iconic yellow plaid blazer and skirt ensemble"
+    },
+    {
+      "id": "main_image2",
+      "imageUrl": "/images/main_image2.jpeg",
+      "title": "Cher Horowitz: White Outfit",
+      "outfitType": "casual",
+      "movie": "Clueless",
+      "undertone": "warm",
+      "description": "White cardigan with matching skirt"
+    },
+    {
+      "id": "main_image3",
+      "imageUrl": "/images/main_image3.jpeg",
+      "title": "Red Tartan Look",
+      "outfitType": "formal",
+      "movie": "Clueless",
+      "undertone": "warm",
+      "description": "Red tartan blazer with matching pants"
+    },
+    {
+      "id": "main_image4",
+      "imageUrl": "/images/main_image4.jpeg",
+      "title": "Brown Vintage Style",
+      "outfitType": "casual",
+      "movie": "Clueless",
+      "undertone": "warm",
+      "description": "Brown cardigan with plaid skirt"
+    },
+    {
+      "id": "main_image5",
+      "imageUrl": "/images/main_image5.jpeg",
+      "title": "Pink Casual Attire",
+      "outfitType": "casual",
+      "movie": "Mean Girls",
+      "undertone": "cool",
+      "description": "Pink sweater with denim skirt"
+    },
+    {
+      "id": "main_image6",
+      "imageUrl": "/images/main_image6.jpeg",
+      "title": "Preppy School Style",
+      "outfitType": "casual",
+      "movie": "Mean Girls",
+      "undertone": "cool",
+      "description": "School uniform inspired look"
+    },
+    {
+      "id": "main_image7",
+      "imageUrl": "/images/main_image7.jpeg",
+      "title": "Elegant Evening Wear",
+      "outfitType": "formal",
+      "movie": "Breakfast at Tiffany's",
+      "undertone": "cool",
+      "description": "Black dress with pearl accessories"
+    }
+  ],
+
+  "tops": [
+    {
+      "id": "top1",
+      "name": "Classic White Tee",
+      "imageUrl": "/images/top1.jpeg"
+    },
+    {
+      "id": "top2",
+      "name": "Yellow Plaid Blazer",
+      "imageUrl": "/images/top2.jpeg"
+    },
+    {
+      "id": "top3",
+      "name": "Cream Cardigan",
+      "imageUrl": "/images/top3.jpeg"
+    },
+    {
+      "id": "top4",
+      "name": "Red Tartan Jacket",
+      "imageUrl": "/images/top4.jpeg"
+    },
+    {
+      "id": "top5",
+      "name": "Brown Vintage Cardigan",
+      "imageUrl": "/images/top5.jpeg"
+    },
+    {
+      "id": "top6",
+      "name": "Pink Cashmere Sweater",
+      "imageUrl": "/images/top6.jpeg"
+    },
+    {
+      "id": "top7",
+      "name": "Navy Preppy Blazer",
+      "imageUrl": "/images/top7.jpeg"
+    },
+    {
+      "id": "top8",
+      "name": "Black Turtleneck",
+      "imageUrl": "/images/top8.jpeg"
+    },
+    {
+      "id": "top9",
+      "name": "Denim Jacket",
+      "imageUrl": "/images/top9.jpeg"
+    },
+    {
+      "id": "top10",
+      "name": "Striped Button-Up",
+      "imageUrl": "/images/top10.jpeg"
+    },
+    {
+      "id": "top11",
+      "name": "Floral Blouse",
+      "imageUrl": "/images/top11.jpeg"
+    },
+    {
+      "id": "top12",
+      "name": "Graphic Print Tee",
+      "imageUrl": "/images/top12.jpeg"
+    },
+    {
+      "id": "top13",
+      "name": "Lace Trim Camisole",
+      "imageUrl": "/images/top13.jpeg"
+    }
+  ],
+  "pants": [
+    {
+      "id": "pant1",
+      "name": "Classic Blue Jeans",
+      "imageUrl": "/images/pant1.jpeg"
+    },
+    {
+      "id": "pant2",
+      "name": "Black Tailored Trousers",
+      "imageUrl": "/images/pant2.jpeg"
+    },
+    {
+      "id": "pant3",
+      "name": "Plaid Skirt",
+      "imageUrl": "/images/pant3.jpeg"
+    },
+    {
+      "id": "pant4",
+      "name": "White A-Line Skirt",
+      "imageUrl": "/images/pant4.jpeg"
+    },
+    {
+      "id": "pant5",
+      "name": "Khaki Chinos",
+      "imageUrl": "/images/pant5.jpeg"
+    },
+    {
+      "id": "pant6",
+      "name": "Denim Mini Skirt",
+      "imageUrl": "/images/pant6.jpeg"
+    },
+    {
+      "id": "pant7",
+      "name": "Pink Pleated Skirt",
+      "imageUrl": "/images/pant7.jpeg"
+    },
+    {
+      "id": "pant8",
+      "name": "Tartan Pants",
+      "imageUrl": "/images/pant8.jpeg"
+    },
+    {
+      "id": "pant9",
+      "name": "Black Leather Pants",
+      "imageUrl": "/images/pant9.jpeg"
+    },
+    {
+      "id": "pant10",
+      "name": "Grey Wool Trousers",
+      "imageUrl": "/images/pant10.jpeg"
+    },
+    {
+      "id": "pant11",
+      "name": "Navy School Skirt",
+      "imageUrl": "/images/pant11.jpeg"
+    },
+    {
+      "id": "pant11",
+      "name": "Navy School Skirt",
+      "imageUrl": "/images/pant12.jpeg"
+    },
+    {
+      "id": "pant11",
+      "name": "Navy School Skirt",
+      "imageUrl": "/images/pant13.jpeg"
+    }
+  ],
+  "footwear": [
+    {
+      "id": "footwear1",
+      "name": "White Platform Sneakers",
+      "imageUrl": "/images/footwear1.jpeg"
+    },
+    {
+      "id": "footwear2",
+      "name": "Black Mary Janes",
+      "imageUrl": "/images/footwear2.jpeg"
+    },
+    {
+      "id": "footwear3",
+      "name": "Brown Loafers",
+      "imageUrl": "/images/footwear3.jpeg"
+    },
+    {
+      "id": "footwear4",
+      "name": "Classic Penny Loafers",
+      "imageUrl": "/images/footwear4.jpeg"
+    },
+    {
+      "id": "footwear5",
+      "name": "White Knee High Boots",
+      "imageUrl": "/images/footwear5.jpeg"
+    },
+    {
+      "id": "footwear6",
+      "name": "Black Ankle Boots",
+      "imageUrl": "/images/footwear6.jpeg"
+    },
+    {
+      "id": "footwear7",
+      "name": "Pink Ballet Flats",
+      "imageUrl": "/images/footwear7.jpeg"
+    },
+    {
+      "id": "footwear8",
+      "name": "Classic Converse",
+      "imageUrl": "/images/footwear8.jpeg"
+    },
+    {
+      "id": "footwear9",
+      "name": "Elegant Black Heels",
+      "imageUrl": "/images/footwear9.jpeg"
+    },
+    {
+      "id": "footwear10",
+      "name": "Yellow Plaid Pumps",
+      "imageUrl": "/images/footwear10.jpeg"
+    }
+  ],
+  "handbags": [
+    {
+      "id": "handbag1",
+      "name": "Classic Black Tote",
+      "imageUrl": "/images/handbag1.jpeg"
+    },
+    {
+      "id": "handbag2",
+      "name": "Yellow Plaid Mini Bag",
+      "imageUrl": "/images/handbag2.jpeg"
+    },
+    {
+      "id": "handbag3",
+      "name": "Pink Heart Clutch",
+      "imageUrl": "/images/handbag3.jpeg"
+    },
+    {
+      "id": "handbag4",
+      "name": "Structured Vintage Purse",
+      "imageUrl": "/images/handbag4.jpeg"
+    },
+    {
+      "id": "handbag5",
+      "name": "Preppy Backpack",
+      "imageUrl": "/images/handbag5.jpeg"
+    }
+  ],
+  "belts": [
+    {
+      "id": "belt1",
+      "name": "Classic Black Leather Belt",
+      "imageUrl": "/images/belt1.jpeg"
+    },
+    {
+      "id": "belt2",
+      "name": "Yellow Plaid Thin Belt",
+      "imageUrl": "/images/belt2.jpeg"
+    },
+    {
+      "id": "belt3",
+      "name": "Gold Chain Belt",
+      "imageUrl": "/images/belt3.jpeg"
+    },
+    {
+      "id": "belt4",
+      "name": "Brown Vintage Buckle Belt",
+      "imageUrl": "/images/belt4.jpeg"
+    }
+  ]
+}
