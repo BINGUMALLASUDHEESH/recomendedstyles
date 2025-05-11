@@ -282,22 +282,44 @@
     {
       "id": "belt1",
       "name": "Classic Black Leather Belt",
-      "imageUrl": "/images/belt1.jpeg"
+      "imageUrl": "assets/images/belt1.jpeg"
     },
     {
       "id": "belt2",
       "name": "Yellow Plaid Thin Belt",
-      "imageUrl": "/images/belt2.jpeg"
+      "imageUrl": "assets/images/belt2.jpeg"
     },
     {
       "id": "belt3",
       "name": "Gold Chain Belt",
-      "imageUrl": "/images/belt3.jpeg"
+      "imageUrl": "assets/images/belt3.jpeg"
     },
     {
       "id": "belt4",
       "name": "Brown Vintage Buckle Belt",
-      "imageUrl": "/images/belt4.jpeg"
+      "imageUrl": "assets/images/belt4.jpeg"
+    }
+  ],
+"accessories": [
+    {
+      "id": "1",
+      "name": "Silver Hoop Earrings",
+      "imageUrl": "https://ibb.co/v4sTcPGs"
+    },
+    {
+      "id": "2",
+      "name": "Gold Chain Necklace",
+      "imageUrl": "https://ibb.co/mFgb5rsj"
+    },
+    {
+      "id": "3",
+      "name": "Floral Hair Clip Set",
+      "imageUrl": "https://ibb.co/WW12f1hm"
+    },
+    {
+      "id": "4",
+      "name": "Silk Square Scarf",
+      "imageUrl": "https://ibb.co/WW3mjZgH"
     }
   ]
 }

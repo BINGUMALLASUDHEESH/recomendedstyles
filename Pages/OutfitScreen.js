@@ -36,12 +36,14 @@ const OutfitScreen = ({ navigation, route }) => {
   };
 
   // Handle navigation to next screen
-  const handleNextScreen = () => {
-    navigation.navigate('OutfitDetails', {
-      inspirationId,
-      outfitType: selectedOutfit
-    });
-  };
+ // Handle navigation to the next screen
+const handleNextScreen = () => {
+  if (selectedOutfit === 1) {
+    navigation.navigate('OutfitDetailsScreen1');
+  } else if (selectedOutfit === 2) {
+    navigation.navigate('OutfitDetailsScreen2');
+  }
+};
 
   return (
     <View style={styles.container}>

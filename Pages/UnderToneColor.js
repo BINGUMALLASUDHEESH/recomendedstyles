@@ -9,26 +9,27 @@ import {
   ScrollView
 } from 'react-native';
 
-const UnderToneColor = ({ navigation ,route }) => {
-    const { hairColor,eyeColor } = route.params;
+const UnderToneColor = ({ navigation, route }) => {
+  const { hairColor, eyeColor } = route.params;
   const [selectedUndertone, setSelectedUndertone] = useState(null);
 
   const handleUndertoneSelect = (undertoneId) => {
     setSelectedUndertone(undertoneId);
-
   };
 
   const handleNextPress = () => {
     if (selectedUndertone) {
-      navigation.navigate('ColorAnalysisResult',{hairColor: hairColor,eyeColor: eyeColor, undertoneColor: selectedUndertone });
+      navigation.navigate('ColorAnalysisResult', {
+        hairColor: hairColor,
+        eyeColor: eyeColor,
+        undertoneColor: selectedUndertone
+      });
     }
   };
 
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView contentContainerStyle={styles.scrollContainer}>
-
-
         <View style={styles.card}>
           <Text style={styles.titleText}>Finish Creating Your Profile</Text>
 
@@ -36,8 +37,9 @@ const UnderToneColor = ({ navigation ,route }) => {
             <Text style={styles.sectionTitle}>Choose Your Undertone Color</Text>
           </View>
 
+          {/* Undertone Options in a Single Row */}
           <View style={styles.undertoneGrid}>
-            {/* Cool Undertone Option */}
+            {/* Cool Undertone */}
             <TouchableOpacity
               style={[
                 styles.undertoneOption,
@@ -50,17 +52,10 @@ const UnderToneColor = ({ navigation ,route }) => {
                 style={styles.handImage}
                 resizeMode="contain"
               />
-              <View style={styles.labelContainer}>
-                <Text style={styles.undertoneTitle}>Cool Undertone</Text>
-                <Text style={styles.undertoneSubtitle}>Blue/Purple Veins</Text>
-                <View style={styles.colorDotsContainer}>
-                  <View style={[styles.colorDot, { backgroundColor: '#8A64B1' }]} />
-                  <View style={[styles.colorDot, { backgroundColor: '#407EC9' }]} />
-                </View>
-              </View>
+              <Text style={styles.undertoneTitle}>Cool Undertone</Text>
             </TouchableOpacity>
 
-            {/* Neutral Undertone Option */}
+            {/* Neutral Undertone */}
             <TouchableOpacity
               style={[
                 styles.undertoneOption,
@@ -73,17 +68,10 @@ const UnderToneColor = ({ navigation ,route }) => {
                 style={styles.handImage}
                 resizeMode="contain"
               />
-              <View style={styles.labelContainer}>
-                <Text style={styles.undertoneTitle}>Neutral Undertone</Text>
-                <Text style={styles.undertoneSubtitle}>Blue/Green Veins</Text>
-                <View style={styles.colorDotsContainer}>
-                  <View style={[styles.colorDot, { backgroundColor: '#407EC9' }]} />
-                  <View style={[styles.colorDot, { backgroundColor: '#5AACA4' }]} />
-                </View>
-              </View>
+              <Text style={styles.undertoneTitle}>Neutral Undertone</Text>
             </TouchableOpacity>
 
-            {/* Warm Undertone Option */}
+            {/* Warm Undertone */}
             <TouchableOpacity
               style={[
                 styles.undertoneOption,
@@ -96,31 +84,20 @@ const UnderToneColor = ({ navigation ,route }) => {
                 style={styles.handImage}
                 resizeMode="contain"
               />
-              <View style={styles.labelContainer}>
-                <Text style={styles.undertoneTitle}>Warm Undertone</Text>
-                <Text style={styles.undertoneSubtitle}>Green/Olive Veins</Text>
-                <View style={styles.colorDotsContainer}>
-                  <View style={[styles.colorDot, { backgroundColor: '#5AACA4' }]} />
-                  <View style={[styles.colorDot, { backgroundColor: '#B99F7E' }]} />
-                </View>
-              </View>
+              <Text style={styles.undertoneTitle}>Warm Undertone</Text>
             </TouchableOpacity>
           </View>
 
-          <View style={styles.progressIndicator}>
-            <Text style={styles.progressDot}>★</Text>
-            <Text style={styles.progressDot}>✿</Text>
-            <Text style={styles.progressDot}>★</Text>
-            <Text style={styles.progressDot}>✿</Text>
-            <Text style={styles.progressDot}>★</Text>
-            <Text style={styles.progressDot}>✿</Text>
-          </View>
-
+          {/* Next Button */}
           <TouchableOpacity
-            style={styles.nextButton}
+            style={[
+              styles.nextButton,
+              !selectedUndertone && { opacity: 0.5 }
+            ]}
             onPress={handleNextPress}
+            disabled={!selectedUndertone}
           >
-            <Text style={styles.nextButtonText}>→</Text>
+            <Text style={styles.nextButtonText}>Next →</Text>
           </TouchableOpacity>
         </View>
       </ScrollView>
@@ -136,22 +113,13 @@ const styles = StyleSheet.create({
   scrollContainer: {
     flexGrow: 1,
     alignItems: 'center',
-  },
-  header: {
-    width: '100%',
-    padding: 16,
-    backgroundColor: '#f5f5f5',
-    alignItems: 'center',
-  },
-  headerText: {
-    fontSize: 18,
-    color: '#a0a0a0',
+    marginTop: 160,
   },
   card: {
     backgroundColor: 'white',
     borderRadius: 8,
     padding: 24,
-    width: '85%',
+    width: '90%',
     alignItems: 'center',
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 2 },
@@ -161,7 +129,7 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
   titleText: {
-    fontSize: 28,
+    fontSize: 24,
     fontWeight: 'bold',
     color: '#3c3678',
     marginBottom: 32,
@@ -181,15 +149,18 @@ const styles = StyleSheet.create({
     color: '#8360c3',
   },
   undertoneGrid: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
     width: '100%',
     marginBottom: 32,
   },
   undertoneOption: {
-    marginBottom: 16,
+    width: '30%',
     borderRadius: 8,
     overflow: 'hidden',
     backgroundColor: '#f0f0f0',
-    padding: 8,
+    alignItems: 'center',
+    paddingVertical: 8,
   },
   selectedOption: {
     borderColor: '#8360c3',
@@ -197,55 +168,25 @@ const styles = StyleSheet.create({
   },
   handImage: {
     width: '100%',
-    height: 150,
-  },
-  labelContainer: {
-    backgroundColor: '#f5f5f5',
-    padding: 10,
-    borderRadius: 8,
-    alignItems: 'center',
+    height: 100,
+    marginBottom: 8,
   },
   undertoneTitle: {
     color: '#8360c3',
-    fontSize: 16,
+    fontSize: 14,
     fontWeight: '600',
-    marginBottom: 2,
-  },
-  undertoneSubtitle: {
-    color: '#9a9a9a',
-    fontSize: 12,
-    marginBottom: 4,
-  },
-  colorDotsContainer: {
-    flexDirection: 'row',
-    marginTop: 4,
-  },
-  colorDot: {
-    width: 20,
-    height: 20,
-    borderRadius: 10,
-    marginHorizontal: 4,
-  },
-  progressIndicator: {
-    flexDirection: 'row',
-    justifyContent: 'center',
-    marginBottom: 16,
-  },
-  progressDot: {
-    fontSize: 20,
-    color: '#c4c4f7',
-    marginHorizontal: 4,
+    textAlign: 'center',
   },
   nextButton: {
-    backgroundColor: '#c4c4f7',
+    backgroundColor: '#8360c3',
     width: '100%',
     paddingVertical: 16,
     borderRadius: 8,
     alignItems: 'center',
   },
   nextButtonText: {
-    fontSize: 24,
-    color: '#383863',
+    fontSize: 18,
+    color: '#fff',
   },
 });
 

@@ -11,13 +11,16 @@ import ColorAnalysisResult from './Pages/ColorAnalysisResult';
 import InspirationScreen from './Pages/InspirationScreen';
 import OutfitScreen from './Pages/OutfitScreen';
 import OutfitDetailsScreen1 from './OutfitDetailsScreen1';
+import AccessoriesScreen from './Pages/AccessoriesScreen';
+import OutfitDetailsScreen2 from './Pages/OutfitDetailsScreen2';
+import AccessoriesScreen2 from './Pages/AccessoriesScreen2';
 
 const Stack = createStackNavigator();
 
 const App = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName='OutfitDetailsScreen1'>
+      <Stack.Navigator initialRouteName='Login'>
         <Stack.Screen
           name="Login"
           component={Login}
@@ -70,6 +73,25 @@ const App = () => {
           component={OutfitDetailsScreen1}
           options={{ headerShown: false }}
         />
+
+        <Stack.Screen
+          name="AccessoriesScreen"
+          component={AccessoriesScreen}
+          options={{ headerShown: false }}
+        />
+
+<Stack.Screen
+          name="OutfitDetailsScreen2"
+          component={OutfitDetailsScreen2}
+          options={{ headerShown: false }}
+        />
+
+        <Stack.Screen
+          name="AccessoriesScreen2"
+          component={AccessoriesScreen2}
+          options={{ headerShown: false }}
+        />
+
       </Stack.Navigator>
 
     </NavigationContainer>

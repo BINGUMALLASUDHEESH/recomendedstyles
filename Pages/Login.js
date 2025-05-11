@@ -1,118 +1,146 @@
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { useNavigation } from '@react-navigation/native';
 import React, { useState } from 'react';
-import { View, Text, TouchableOpacity, StyleSheet, Image, ScrollView } from 'react-native';
-import { Feather } from '@expo/vector-icons';
+import { Text, View, TextInput, TouchableOpacity, StyleSheet, Alert } from 'react-native';
+import { URL } from './Url';
 
-const Outfit = ({ navigation }) => {
-  const [selectedOutfit, setSelectedOutfit] = useState(null);
+const API_URL = `${URL}/users`;
 
-  const outfitItems = [
-    { id: 1, name: 'Casual Outfit', image: require('../images/image1.jpeg') },
-    { id: 2, name: 'Formal Outfit', image: require('../images/image2.jpeg') }
-  ];
+const Login = () => {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const navigation = useNavigation();
 
-  const handleSelectOutfit = (id) => {
-    setSelectedOutfit(id);
-  };
+  const handleLogin = async () => {
+    if (!email || !password) {
+      Alert.alert('All fields are required!');
+      return;
+    }
 
-  const handleNextPress = () => {
-    navigation.navigate('OutfitDetails', { outfitId: selectedOutfit });
+    const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    if (!emailRegex.test(email)) {
+      Alert.alert('Please enter a valid email address!');
+      return;
+    }
+
+    try {
+      const response = await fetch(`${API_URL}?email=${email}`);
+      const data = await response.json();
+
+      if (data.length === 0) {
+        Alert.alert('Email not found. Please sign up first.');
+        navigation.navigate('SignUp');
+        return;
+      }
+
+      const user = data[0];
+      if (user.password === password) {
+        Alert.alert('Login Successful');
+        await AsyncStorage.setItem('userId', user.id.toString());
+        await AsyncStorage.setItem('userName', user.name);
+        navigation.navigate('HairColorOption');
+      } else {
+        Alert.alert('Incorrect Password. Please try again.');
+      }
+    } catch (error) {
+      console.error('Error:', error);
+      Alert.alert('Failed to connect to the server. Please try again later.');
+    }
   };
 
   return (
-    <ScrollView contentContainerStyle={styles.container}>
-      <Text style={styles.title}>What Type Of Outfits?</Text>
+    <View style={styles.container}>
+      <Text style={styles.title}>Login to Your Account</Text>
+      <Text style={styles.subTitle}>
+        Not Registered?{' '}
+        <Text
+          style={styles.linkText}
+          onPress={() => navigation.navigate('SignUp')}
+        >
+          Sign up here
+        </Text>
+      </Text>
 
-      <View style={styles.outfitContainer}>
-        {outfitItems.map((item) => (
-          <TouchableOpacity
-            key={item.id}
-            style={[styles.outfitItem, selectedOutfit === item.id && styles.selectedItem]}
-            onPress={() => handleSelectOutfit(item.id)}
-          >
-            <Image source={item.image} style={styles.outfitImage} />
-            <Text style={styles.outfitText}>{item.name}</Text>
-          </TouchableOpacity>
-        ))}
-      </View>
+      <View style={styles.formContainer}>
+        <Text style={styles.label}>EMAIL</Text>
+        <TextInput
+          style={styles.input}
+          placeholder="Enter Your Email"
+          value={email}
+          onChangeText={setEmail}
+        />
 
-      {selectedOutfit && (
-        <TouchableOpacity style={styles.nextButton} onPress={handleNextPress}>
-          <Text style={styles.nextButtonText}>Next</Text>
-          <Feather name="arrow-right" size={20} color="#fff" style={styles.nextButtonIcon} />
+        <Text style={styles.label}>PASSWORD</Text>
+        <TextInput
+          style={styles.input}
+          placeholder="Enter Your Password"
+          value={password}
+          onChangeText={setPassword}
+          secureTextEntry
+        />
+
+        <TouchableOpacity style={styles.button} onPress={handleLogin}>
+          <Text style={styles.buttonText}>Log In</Text>
         </TouchableOpacity>
-      )}
-    </ScrollView>
+      </View>
+    </View>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
-    flexGrow: 1,
-    alignItems: 'center',
-    paddingVertical: 40,
-    backgroundColor: '#faf8ff',
+    flex: 1,
+    justifyContent: 'center',
+    paddingHorizontal: 20,
+    backgroundColor: '#f8f8f8',
   },
   title: {
-    fontSize: 28,
+    fontSize: 24,
     fontWeight: 'bold',
+    marginBottom: 10,
+    textAlign: 'center',
+  },
+  subTitle: {
     marginBottom: 20,
-    color: '#51456f',
+    textAlign: 'center',
+    color: '#7a7a7a',
   },
-  outfitContainer: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    width: '90%',
-    marginVertical: 10,
+  linkText: {
+    color: '#1E90FF',
+    fontWeight: 'bold',
   },
-  outfitItem: {
-    width: '48%',
-    borderRadius: 15,
-    overflow: 'hidden',
-    borderWidth: 2,
-    borderColor: 'transparent',
-    backgroundColor: '#fff',
+  formContainer: {
+    backgroundColor: '#ffffff',
+    borderRadius: 10,
+    padding: 20,
+    elevation: 5,
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.2,
-    shadowRadius: 4,
-    elevation: 5,
+    shadowRadius: 5,
+    marginBottom: 20,
   },
-  selectedItem: {
-    borderColor: '#6a1b9a',
-    shadowColor: '#6a1b9a',
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.4,
-    shadowRadius: 6,
-    elevation: 8,
+  label: {
+    marginBottom: 5,
+    fontWeight: '600',
   },
-  outfitImage: {
-    width: '100%',
-    height: 150,
+  input: {
+    backgroundColor: '#e9e9e9',
+    borderRadius: 5,
+    marginBottom: 15,
+    paddingHorizontal: 10,
+    height: 40,
   },
-  outfitText: {
-    textAlign: 'center',
-    marginTop: 8,
-    fontSize: 16,
-    fontWeight: 'bold',
-    color: '#51456f',
-  },
-  nextButton: {
-    flexDirection: 'row',
+  button: {
+    backgroundColor: '#6a0dad',
+    paddingVertical: 10,
+    borderRadius: 5,
     alignItems: 'center',
-    marginTop: 30,
-    backgroundColor: '#6a1b9a',
-    paddingVertical: 12,
-    paddingHorizontal: 25,
-    borderRadius: 8,
   },
-  nextButtonText: {
+  buttonText: {
     color: '#fff',
-    fontSize: 18,
-    marginRight: 10,
+    fontSize: 16,
   },
-  nextButtonIcon: {
-    marginLeft: 5,
-  }
 });
 
-export default Outfit;
+export default Login;

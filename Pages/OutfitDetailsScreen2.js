@@ -3,9 +3,9 @@ import { View, Text, Image, TouchableOpacity, StyleSheet, ScrollView } from 'rea
 import { Feather } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 
-const OutfitDetailsScreen1 = () => {
+const OutfitDetailsScreen2 = () => {
 
-    const navigation = useNavigation(); // Use the hook to get access to the navigation prop
+    const navigation = useNavigation();
 
 
   return (
@@ -19,7 +19,7 @@ const OutfitDetailsScreen1 = () => {
           <View style={styles.titleContainer}>
             {/* Centered image */}
             <Image
-              source={require('./assets/header_image.png')}
+              source={require('../assets/header_image.png')}
               style={{ width: 135, height: 55 }}
             />
           </View>
@@ -55,13 +55,13 @@ const OutfitDetailsScreen1 = () => {
 
             {/* Main image in the center */}
             <Image
-              source={require('./assets/main6.png')}
+              source={require('../assets/main31.png')}
               style={styles.mainImage}
             />
 
             <TouchableOpacity
         style={styles.arrowButton}
-        onPress={() => navigation.navigate('AccessoriesScreen')}  // Navigate on press
+        onPress={() => navigation.navigate('AccessoriesScreen2')}  // Navigate on press
       >
         <Feather name="arrow-right" size={18} color="white" />
       </TouchableOpacity>
@@ -79,14 +79,14 @@ const OutfitDetailsScreen1 = () => {
         <View style={styles.accessoriesRow}>
           <View style={styles.accessoryItem}>
             <Image
-              source={require('./assets/top5.png')}
+              source={require('../assets/top6.png')}
               style={styles.accessoryImage}
             />
           </View>
           <View style={styles.accessoryItem}>
             <Image
-              source={require('./assets/top8.png')}
-              style={styles.accessoryImage}
+              source={require('../assets/top9.png')}
+style={[styles.accessoryImage, { transform: [{ rotate: '-20deg' }] }]}
             />
           </View>
         </View>
@@ -94,7 +94,7 @@ const OutfitDetailsScreen1 = () => {
         <View style={styles.centerAccessoryRow}>
           <View style={styles.accessoryItem}>
             <Image
-              source={require('./assets/top10.png')}
+              source={require('../assets/top12.png')}
               style={styles.accessoryImage}
             />
           </View>
@@ -103,13 +103,13 @@ const OutfitDetailsScreen1 = () => {
         <View style={styles.accessoriesRow}>
           <View style={styles.accessoryItem}>
             <Image
-              source={require('./assets/top1.png')}
-              style={[styles.accessoryImage, { transform: [{ rotate: '-50deg' }], height: 150, width: 150 }]}
+              source={require('../assets/pant6.png')}
+              style={[styles.accessoryImage, { transform: [{ rotate: '-50deg' }], height: 200, width: 150 }]}
             />
           </View>
           <View style={styles.accessoryItem}>
             <Image
-              source={require('./assets/pant10.png')}
+              source={require('../assets/pant12.png')}
               style={[styles.accessoryImage, { transform: [{ rotate: '45deg' }], height: 190, width: 150 }]}
             />
           </View>
@@ -242,4 +242,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default OutfitDetailsScreen1;
+export default OutfitDetailsScreen2;
