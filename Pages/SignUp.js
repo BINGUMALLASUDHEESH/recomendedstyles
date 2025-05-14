@@ -52,12 +52,14 @@ const SignUp = () => {
         },
         body: JSON.stringify(newUser),
       });
+      console.log('Response:', response);
 
       if (response.ok) {
-        Alert.alert('Signup Successful');
-        await AsyncStorage.setItem('userId', userId.toString());
-        await AsyncStorage.setItem('userName', `${name}`);
-        navigation.navigate('Welcome');
+        const responseData = await response.json();
+    Alert.alert('Signup Successful');
+    await AsyncStorage.setItem('userId', responseData.id.toString());
+    await AsyncStorage.setItem('userName', `${name}`);
+    navigation.navigate('HairColorOption');
       } else {
         Alert.alert('Error signing up. Please try again.');
       }

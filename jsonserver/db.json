@@ -6,6 +6,27 @@
       "email": "bsudheesh905@gmail.com",
       "password": "1234",
       "age": "25"
+    },
+    {
+      "id": "b58b",
+      "name": "Sudheeesh ",
+      "email": "bsudheesh123@gmail.com",
+      "password": "1234",
+      "age": "22"
+    },
+    {
+      "id": "ab82",
+      "name": "Asudh ",
+      "email": "aaa@gmail.com",
+      "password": "Fff",
+      "age": "22"
+    },
+    {
+      "id": "563b",
+      "name": "Fhf",
+      "email": "Vas@gmail.com",
+      "password": "1234",
+      "age": "22"
     }
   ]
 }
