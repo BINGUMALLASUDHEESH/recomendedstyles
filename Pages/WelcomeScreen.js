@@ -1,7 +1,20 @@
 import React, { useState } from 'react';
-import { View, Text, Image, StyleSheet, TouchableOpacity } from 'react-native';
+import {
+  View,
+  Text,
+  Image,
+  StyleSheet,
+  TouchableOpacity,
+  SafeAreaView,
+  ScrollView,
+  StatusBar,
+  Platform,
+  Dimensions
+} from 'react-native';
 import { Feather } from '@expo/vector-icons';
 import { Picker } from '@react-native-picker/picker';
+
+const { width, height } = Dimensions.get('window');
 
 const WelcomeScreen = ({ route, navigation }) => {
   // Extract parameters passed from previous screen
@@ -33,12 +46,20 @@ const WelcomeScreen = ({ route, navigation }) => {
   };
 
   return (
-    <View style={styles.container}>
-      {/* Header with absolutely positioned logo */}
+    <SafeAreaView style={styles.safeArea}>
+      {/* Header with logo */}
       <View style={styles.header}>
         <TouchableOpacity style={styles.menuButton}>
           <Feather name="menu" size={24} color="#333" />
         </TouchableOpacity>
+
+        <View style={styles.logoContainer}>
+          <Image
+            source={require('../images/header_image.jpeg')}
+            style={styles.logo}
+            resizeMode="contain"
+          />
+        </View>
 
         <View style={styles.headerRightIcons}>
           <TouchableOpacity style={styles.iconButton}>
@@ -50,173 +71,170 @@ const WelcomeScreen = ({ route, navigation }) => {
         </View>
       </View>
 
-      {/* Centered Star Style Logo */}
-      <View style={styles.logoWrapper}>
-        <View style={styles.logoContainer}>
+      {/* Scrollable Content */}
+      <ScrollView
+        style={styles.scrollView}
+        contentContainerStyle={styles.scrollContent}
+        showsVerticalScrollIndicator={false}
+      >
+        {/* Profile Section */}
+        <View style={styles.profileSection}>
           <Image
-            source={require('../images/header_image.jpeg')}
-            style={{ width: 100, height: 50}}
+            source={require('../images/profile_avator1.jpg')}
+            style={styles.profileImage}
           />
+          <Text style={styles.greeting}>Hello F,</Text>
         </View>
-      </View>
 
-      {/* Profile Section */}
-      <View style={styles.profileSection}>
-        <Image
-          // Replace with your image path - ensure it exists
-          source={require('../images/profile_avator1.jpg')}
-          style={styles.profileImage}
-        />
-        <Text style={styles.greeting}>Hello F,</Text>
-      </View>
-
-      {/* Color Information Section */}
-      <View style={styles.infoSection}>
-        {/* Hair Color Picker */}
-        <View style={styles.pickerContainer}>
-          <Text style={styles.pickerLabel}>Your Hair Color Is</Text>
-          <View style={styles.pickerWrapper}>
-            <Picker
-              selectedValue={hairColor}
-              onValueChange={(value) => setHairColor(value)}
-              style={styles.picker}
-              dropdownIconColor="#666"
-            >
-              <Picker.Item label="Black" value="Black" />
-              <Picker.Item label="Brown" value="Brown" />
-              <Picker.Item label="Blonde" value="Blonde" />
-              <Picker.Item label="Red" value="Red" />
-              <Picker.Item label="Gray" value="Gray" />
-            </Picker>
+        {/* Color Information Section */}
+        <View style={styles.infoSection}>
+          {/* Hair Color Picker */}
+          <View style={styles.pickerContainer}>
+            <Text style={styles.pickerLabel}>Your Hair Color Is</Text>
+            <View style={styles.pickerWrapper}>
+              <Picker
+                selectedValue={hairColor}
+                onValueChange={(value) => setHairColor(value)}
+                style={styles.picker}
+                dropdownIconColor="#666"
+              >
+                <Picker.Item label="Black" value="Black" />
+                <Picker.Item label="Brown" value="Brown" />
+                <Picker.Item label="Blonde" value="Blonde" />
+                <Picker.Item label="Red" value="Red" />
+                <Picker.Item label="Gray" value="Gray" />
+              </Picker>
+            </View>
           </View>
-        </View>
 
-        {/* Eye Color Picker */}
-        <View style={styles.pickerContainer}>
-          <Text style={styles.pickerLabel}>Your Eye Color Is</Text>
-          <View style={styles.pickerWrapper}>
-            <Picker
-              selectedValue={eyeColor}
-              onValueChange={(value) => setEyeColor(value)}
-              style={styles.picker}
-              dropdownIconColor="#666"
-            >
-              <Picker.Item label="Brown" value="Brown" />
-              <Picker.Item label="Blue" value="Blue" />
-              <Picker.Item label="Green" value="Green" />
-              <Picker.Item label="Hazel" value="Hazel" />
-              <Picker.Item label="Gray" value="Gray" />
-            </Picker>
+          {/* Eye Color Picker */}
+          <View style={styles.pickerContainer}>
+            <Text style={styles.pickerLabel}>Your Eye Color Is</Text>
+            <View style={styles.pickerWrapper}>
+              <Picker
+                selectedValue={eyeColor}
+                onValueChange={(value) => setEyeColor(value)}
+                style={styles.picker}
+                dropdownIconColor="#666"
+              >
+                <Picker.Item label="Brown" value="Brown" />
+                <Picker.Item label="Blue" value="Blue" />
+                <Picker.Item label="Green" value="Green" />
+                <Picker.Item label="Hazel" value="Hazel" />
+                <Picker.Item label="Gray" value="Gray" />
+              </Picker>
+            </View>
           </View>
-        </View>
 
-        {/* Undertone Color Picker */}
-        <View style={styles.pickerContainer}>
-          <Text style={styles.pickerLabel}>Your Undertone Color Is</Text>
-          <View style={styles.pickerWrapper}>
-            <Picker
-              selectedValue={undertoneColor}
-              onValueChange={(value) => setUndertoneColor(value)}
-              style={styles.picker}
-              dropdownIconColor="#666"
-            >
-              <Picker.Item label="Warm Undertone" value="Warm Undertone" />
-              <Picker.Item label="Cool Undertone" value="Cool Undertone" />
-              <Picker.Item label="Neutral Undertone" value="Neutral Undertone" />
-            </Picker>
+          {/* Undertone Color Picker */}
+          <View style={styles.pickerContainer}>
+            <Text style={styles.pickerLabel}>Your Undertone Color Is</Text>
+            <View style={styles.pickerWrapper}>
+              <Picker
+                selectedValue={undertoneColor}
+                onValueChange={(value) => setUndertoneColor(value)}
+                style={styles.picker}
+                dropdownIconColor="#666"
+              >
+                <Picker.Item label="Warm Undertone" value="Warm Undertone" />
+                <Picker.Item label="Cool Undertone" value="Cool Undertone" />
+                <Picker.Item label="Neutral Undertone" value="Neutral Undertone" />
+              </Picker>
+            </View>
           </View>
-        </View>
 
-        {/* Result Section */}
-        <View style={styles.resultContainer}>
-          <Text style={styles.resultLabel}>Based On Your Input You Are:</Text>
-          <Text style={styles.resultValue}>{colorType}</Text>
-        </View>
+          {/* Result Section */}
+          <View style={styles.resultContainer}>
+            <Text style={styles.resultLabel}>Based On Your Input You Are:</Text>
+            <Text style={styles.resultValue}>{colorType}</Text>
+          </View>
 
-        {/* Action Button */}
-        <TouchableOpacity
-          style={styles.actionButton}
-          onPress={handleLookForOutfits}
-        >
-          <Text style={styles.actionButtonText}>Look For Outfits</Text>
-        </TouchableOpacity>
-      </View>
-    </View>
+          {/* Action Button */}
+          <TouchableOpacity
+            style={styles.actionButton}
+            onPress={handleLookForOutfits}
+          >
+            <Text style={styles.actionButtonText}>Look For Outfits</Text>
+          </TouchableOpacity>
+        </View>
+      </ScrollView>
+    </SafeAreaView>
   );
 };
 
 const styles = StyleSheet.create({
-  container: {
+  safeArea: {
     flex: 1,
     backgroundColor: '#fff',
+    paddingTop: Platform.OS === 'android' ? StatusBar.currentHeight : 0,
   },
   header: {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    paddingTop: 30,
     paddingHorizontal: 15,
     backgroundColor: '#fff',
-    height: 80,
+    height: height * 0.08, // Responsive height
     borderBottomWidth: 1,
     borderBottomColor: '#f0f0f0',
-    zIndex: 0,
+    zIndex: 1,
+    paddingTop: Platform.OS === 'ios' ? 10 : 0,
   },
   menuButton: {
-    padding: 5,
-  },
-  logoWrapper: {
-    width: '100%',
-    alignItems: 'center',
-    position: 'absolute',
-    top: 40,
-    zIndex: 10,
-    marginBottom: 20,
+    padding: 8,
   },
   logoContainer: {
     backgroundColor: '#FFCCFF',
-    paddingHorizontal: 20,
-    paddingVertical: 8,
+    paddingHorizontal: 15,
+    paddingVertical: 5,
     borderRadius: 20,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
-  logoText: {
-    color: '#9932CC',
-    fontSize: 18,
-    fontWeight: 'bold',
-    textAlign: 'center',
+  logo: {
+    width: width * 0.25, // Responsive width
+    height: height * 0.025, // Responsive height
   },
   headerRightIcons: {
     flexDirection: 'row',
   },
   iconButton: {
-    padding: 5,
-    marginLeft: 10,
+    padding: 8,
+    marginLeft: 8,
+  },
+  scrollView: {
+    flex: 1,
+  },
+  scrollContent: {
+    flexGrow: 1,
+    paddingBottom: 20,
   },
   profileSection: {
     alignItems: 'center',
-    marginTop: 50,
+    marginTop: height * 0.03, // Responsive margin
+    paddingVertical: 10,
   },
   profileImage: {
-    width: 100,
-    height: 100,
-    borderRadius: 50,
+    width: width * 0.25, // Responsive width
+    height: width * 0.25, // Keep aspect ratio 1:1
+    borderRadius: (width * 0.25) / 2, // Half of width for perfect circle
     backgroundColor: '#ddd', // Placeholder color
   },
   greeting: {
-    fontSize: 22,
+    fontSize: Math.min(22, width * 0.055), // Responsive font size with cap
     fontWeight: '600',
     marginTop: 10,
     color: '#333',
   },
   infoSection: {
-    paddingHorizontal: 20,
-    marginTop: 20,
+    paddingHorizontal: width * 0.05, // Responsive padding
+    marginTop: height * 0.02, // Responsive margin
   },
   pickerContainer: {
-    marginBottom: 15,
+    marginBottom: height * 0.02, // Responsive margin
   },
   pickerLabel: {
-    fontSize: 16,
+    fontSize: Math.min(16, width * 0.04), // Responsive font size with cap
     color: '#666',
     marginBottom: 5,
   },
@@ -227,31 +245,33 @@ const styles = StyleSheet.create({
     backgroundColor: '#f9f9f9',
   },
   picker: {
-    height: 50,
+    height: Platform.OS === 'ios' ? 150 : 50, // Different height for iOS
+    maxHeight: height * 0.07, // Cap the height
   },
   resultContainer: {
-    marginTop: 10,
-    marginBottom: 20,
+    marginTop: height * 0.02, // Responsive margin
+    marginBottom: height * 0.02, // Responsive margin
   },
   resultLabel: {
-    fontSize: 16,
+    fontSize: Math.min(16, width * 0.04), // Responsive font size with cap
     color: '#333',
   },
   resultValue: {
-    fontSize: 18,
+    fontSize: Math.min(18, width * 0.045), // Responsive font size with cap
     fontWeight: 'bold',
     color: '#9932CC',
     marginTop: 5,
   },
   actionButton: {
     backgroundColor: '#E6CCFF',
-    paddingVertical: 12,
+    paddingVertical: height * 0.015, // Responsive padding
     borderRadius: 5,
     alignItems: 'center',
-    marginTop: 10,
+    marginTop: height * 0.02, // Responsive margin
+    marginBottom: height * 0.03, // Add bottom margin
   },
   actionButtonText: {
-    fontSize: 16,
+    fontSize: Math.min(16, width * 0.04), // Responsive font size with cap
     fontWeight: '600',
     color: '#333',
   },
