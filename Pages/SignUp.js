@@ -15,60 +15,31 @@ const SignUp = () => {
     const navigation = useNavigation();
 
   const handleSignUp = async () => {
-    if (!name || !email || !password || !age) {
-      Alert.alert('All fields are required!');
-      return;
-    }
+  if (!name || !email || !password || !age) {
+    Alert.alert('All fields are required!');
+    return;
+  }
 
-    const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-    if (!emailRegex.test(email)) {
-      Alert.alert('Please enter a valid email address!');
-      return;
-    }
+  const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+  if (!emailRegex.test(email)) {
+    Alert.alert('Please enter a valid email address!');
+    return;
+  }
 
-    try {
-
-      const emailCheckResponse = await fetch(`${API_URL}?email=${email}`);
-      const emailCheckData = await emailCheckResponse.json();
-
-      if (emailCheckData.length > 0) {
-        Alert.alert('Email already registered. Please log in!');
-        navigation.navigate('Login');
-        return;
-      }
-
-
-      const newUser = {
-        name,
-        email,
-        password,
-        age,
-      };
-
-      const response = await fetch(API_URL, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(newUser),
-      });
-      console.log('Response:', response);
-
-      if (response.ok) {
-        const responseData = await response.json();
+  try {
+    // Store user details locally (you can extend this to use AsyncStorage if needed)
+    await AsyncStorage.setItem('userName', name);
+   // await AsyncStorage.setItem('userEmail', email);
+    // await AsyncStorage.setItem('userAge', age);
+l
     Alert.alert('Signup Successful');
-    await AsyncStorage.setItem('userId', responseData.id.toString());
-    await AsyncStorage.setItem('userName', `${name}`);
     navigation.navigate('HairColorOption');
-      } else {
-        Alert.alert('Error signing up. Please try again.');
-      }
-    }
-    catch (error) {
-      console.error('Error:', error);
-      Alert.alert('Failed to connect to the server. Please try again later.');
-    }
-  };
+  } catch (error) {
+    console.error('Error:', error);
+    Alert.alert('Something went wrong. Please try again.');
+  }
+};
+
 
   return (
     <View style={styles.container}>

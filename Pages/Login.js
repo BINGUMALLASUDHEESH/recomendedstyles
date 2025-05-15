@@ -24,24 +24,8 @@ const Login = () => {
     }
 
     try {
-      const response = await fetch(`${API_URL}?email=${email}`);
-      const data = await response.json();
-
-      if (data.length === 0) {
-        Alert.alert('Email not found. Please sign up first.');
-        navigation.navigate('SignUp');
-        return;
-      }
-
-      const user = data[0];
-      if (user.password === password) {
-        Alert.alert('Login Successful');
-        await AsyncStorage.setItem('userId', user.id.toString());
-        await AsyncStorage.setItem('userName', user.name);
-        navigation.navigate('HairColorOption');
-      } else {
-        Alert.alert('Incorrect Password. Please try again.');
-      }
+      await AsyncStorage.setItem('userName', email);
+      navigation.navigate('HairColorOption');
     } catch (error) {
       console.error('Error:', error);
       Alert.alert('Failed to connect to the server. Please try again later.');
